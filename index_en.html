@@ -3,131 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodie Choice - Developer Portal</title>
+    <title>Foodie Choice | Making Every Choice a Delicious Surprise</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #FF7E36;
-            --primary-hover: #e0651d;
-            --text-color: #333333;
-            --light-bg: #fdfbf7;
-            --card-bg: #ffffff;
-            --shadow-color: rgba(255, 126, 54, 0.08);
+            --primary: #FF7E36;
+            --primary-light: #FFAE63;
+            --primary-dark: #E05E1B;
+            --secondary: #2C2C2E;
+            --background: #FAFAFC;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1C1C1E;
+            --text-muted: #8E8E93;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text-color);
-            max-width: 800px;
+            overflow-x: hidden;
+        }
+
+        /* Background Glows */
+        .bg-glows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+
+        .glow-1 {
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background-color: var(--primary);
+            animation: pulse 12s infinite alternate;
+        }
+
+        .glow-2 {
+            top: 40%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background-color: var(--primary-light);
+            animation: pulse 8s infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(30px, 50px); }
+        }
+
+        /* Header */
+        header {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: var(--light-bg);
+            padding: 24px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
         }
-        .lang-switch {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .lang-btn {
-            display: inline-block;
-            padding: 6px 16px;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            transition: all 0.3s ease;
         }
-        .lang-btn:hover {
-            background-color: var(--primary-color);
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             color: white;
-        }
-        .card {
-            background: var(--card-bg);
-            padding: 45px;
-            border-radius: 24px;
-            box-shadow: 0 12px 40px var(--shadow-color);
-            border: 1px solid rgba(255, 126, 54, 0.05);
-        }
-        h1 {
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 2.2em;
             font-weight: 800;
+            box-shadow: 0 8px 16px rgba(255, 126, 54, 0.3);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
             letter-spacing: -0.5px;
         }
-        .subtitle {
-            color: #666;
-            font-size: 1.15em;
-            margin-bottom: 35px;
-            font-weight: 500;
+
+        .logo-text span {
+            color: var(--primary);
         }
-        p {
-            font-size: 1.05em;
-            color: #4a4a4a;
-            margin-bottom: 25px;
-        }
-        .links {
-            margin-top: 40px;
-            border-top: 1px solid #f0e6df;
-            padding-top: 30px;
+
+        nav {
             display: flex;
-            gap: 20px;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .badge {
+            background-color: rgba(255, 126, 54, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 126, 54, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        /* App Store Download Button */
+        .download-buttons {
+            display: flex;
+            gap: 16px;
             flex-wrap: wrap;
         }
-        .links a {
-            display: inline-block;
-            color: var(--primary-color);
+
+        .btn-store {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-store:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            background-color: #000;
+        }
+
+        .btn-store svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .btn-text-small {
+            font-size: 11px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: block;
+            margin-bottom: -2px;
+        }
+
+        .btn-text-large {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Phone Mockup */
+        .hero-mockup {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 640px;
+            background-color: #000;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border: 4px solid #3a3a3c;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #FFF5EF 0%, #FAFAFC 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* App Interface Simulation */
+        .app-header {
+            padding: 30px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .app-logo {
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .app-user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+        }
+
+        .app-card {
+            margin: 15px 20px;
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .app-card-image {
+            width: 100%;
+            height: 140px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .app-card-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 12px;
+            color: var(--text-main);
+        }
+
+        .app-card-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .app-card-btn {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .app-tabbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            border-top: 1px solid #f2f2f7;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .tab-item {
+            width: 24px;
+            height: 24px;
+            background-color: #e5e5ea;
+            border-radius: 6px;
+        }
+
+        .tab-item.active {
+            background-color: var(--primary);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-title h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .features-title p {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.06);
+            border-color: rgba(255, 126, 54, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 126, 54, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Support / Contact Section */
+        .info-section {
+            background-color: #FFF5EF;
+            padding: 100px 20px;
+        }
+
+        .info-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(255, 126, 54, 0.05);
+            border: 1px solid rgba(255, 126, 54, 0.08);
+        }
+
+        .info-container h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .info-container p {
+            font-size: 16px;
+            color: #48484a;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            border-top: 1px solid #f2f2f7;
+            padding-top: 24px;
+            margin-top: 30px;
+        }
+
+        .contact-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 12px;
-            background-color: rgba(255, 126, 54, 0.05);
-            transition: all 0.2s ease;
         }
-        .links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .contact {
+
+        /* AdMob Notice Section */
+        .ads-notice {
             margin-top: 40px;
-            font-size: 0.95em;
-            color: #777;
-            background: #faf6f2;
             padding: 20px;
-            border-radius: 16px;
-            border-left: 4px solid var(--primary-color);
+            background-color: var(--background);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            font-size: 14px;
+            color: var(--text-muted);
         }
-        .contact p {
-            margin: 0;
-            color: #666;
+
+        .ads-code {
+            font-family: monospace;
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #e5e5ea;
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--text-main);
         }
-        .contact strong {
-            color: var(--text-color);
+
+        /* Footer */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            border-top: 1px solid #e5e5ea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Optimization */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .hero-mockup {
+                margin-top: 40px;
+            }
+            
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        <a href="index.html" class="lang-btn">中文版本</a>
+
+    <!-- Background Glow -->
+    <div class="bg-glows">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
     </div>
 
-    <div class="card">
-        <h1>Foodie Choice</h1>
-        <p class="subtitle">Making every choice a delicious surprise.</p>
-        
-        <p>Welcome to the Foodie Choice Developer Support Portal. We are dedicated to leveraging innovative technology to help users solve the ultimate daily puzzle of "What to eat today?", while providing a superior dining exploration and collaborative voting decision experience.</p>
+    <!-- Navigation -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">FC</div>
+            <div class="logo-text">Foodie<span>Choice</span></div>
+        </a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#support">Support</a>
+            <a href="index.html" style="color: var(--primary); border: 1px solid var(--primary); padding: 4px 12px; border-radius: 20px;">中文</a>
+            <a href="privacy_en.html">Privacy Policy</a>
+            <a href="terms_en.html">Terms of Service</a>
+        </nav>
+    </header>
 
-        <div class="links">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🔥 What to eat today?</div>
+            <h1>Making Every Choice<br>a <span>Delicious Surprise</span></h1>
+            <p>"Foodie Choice (ShiJue)" is a restaurant exploration App designed for foodies. Integrated with precise map positioning and opening hours analysis algorithms, it solves your "what to eat for every meal" puzzle in one click, leading you to discover wonderful tastes hidden in every corner of the city.</p>
+            
+            <div class="download-buttons">
+                <!-- App Store Download Button Simulation -->
+                <a href="https://apps.apple.com/app/id6769754647" class="btn-store">
+                    <svg viewBox="0 0 384 512">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48.7-22.7-84.5-22.7-46.9 0-90.3 26.4-114 67.5-49 84.8-12.6 209.7 34.5 277.6 23.3 33.3 49.6 70.1 86 68.8 34.9-1.4 48.2-22.3 90.4-22.3 41.9 0 54 22.3 90.6 21.5 37.1-.8 60-33 83-66.6 26.7-38.6 37.5-76.1 38.1-78.1-1.2-.5-72.8-27.7-73.4-110.8zM286.7 82.5c18-22.4 30.2-53.5 26.8-82.5-25.2 1-56.1 16.9-74.2 38.2-15.6 18-29.3 49.6-25.4 78 28.1 2.2 57.2-14.7 72.8-33.7z"/>
+                    </svg>
+                    <div>
+                        <span class="btn-text-small">Download on the</span>
+                        <span class="btn-text-large">App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-mockup">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="app-header">
+                        <span class="app-logo">ShiJue</span>
+                        <div class="app-user-avatar"></div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-card-image">Sushi, BBQ, Hotpot</div>
+                        <div class="app-card-title">Shin-Kan-Ran Taoyuan</div>
+                        <div class="app-card-sub">
+                            <span>⭐️ 4.5 Ratings</span>
+                            <span style="color: green; font-weight: bold;">Open Now</span>
+                        </div>
+                        <div class="app-card-btn">Decided to eat here!</div>
+                    </div>
+
+                    <div class="app-card" style="margin-top: 0; opacity: 0.9;">
+                        <div class="app-card-title" style="margin-top: 0; font-size: 14px;">Great Desert Red Hotpot</div>
+                        <div class="app-card-sub" style="margin-top: 2px;">
+                            <span>⭐️ 4.6 (120+ reviews)</span>
+                            <span style="color: #FF7E36;">Hotpot Cuisine</span>
+                        </div>
+                    </div>
+
+                    <div class="app-tabbar">
+                        <div class="tab-item active"></div>
+                        <div class="tab-item"></div>
+                        <div class="tab-item"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-title">
+            <h2>Core Features of Foodie Choice</h2>
+            <p>Elaborately developed exploration and map technology provides you a smooth food尋訪 experience</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3>Smart Map Exploration</h3>
+                <p>One-click positioning to explore popular delicacies around you, supporting precise filtering of more than ten categories including Chinese, Japanese, Korean, Thai, and Western cuisines.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Business Hours Algorithm</h3>
+                <p>Original multi-period comparison and daily business hour analysis mechanism lets you easily grasp real business status like breaks and holidays, never missing out.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Premium Recommendations</h3>
+                <p>Leading you to discover the most popular special zones and marketing signature dishes through smooth dynamic card sliding effects, easily getting inspiration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support and Contact Section -->
+    <section class="info-section" id="support">
+        <div class="info-container">
+            <h2>Developer & Support</h2>
+            <p>"Foodie Choice (ShiJue)" is built independently by a development team that loves food and technology. We believe that technology should improve the quality of life, and "what to eat" is one of the most important decisions we make every day. If you encounter any technical problems or have business cooperation needs, please feel free to contact us.</p>
+            
+            <div class="contact-info">
+                <h4>Contact Us</h4>
+                <p>Developer: HungChe Hsu</p>
+                <p>Email: <a href="mailto:showing-fondue-6u@icloud.com">showing-fondue-6u@icloud.com</a></p>
+            </div>
+
+            <!-- AdMob App-ads.txt Notice -->
+            <div class="ads-notice">
+                <strong>📢 Developer Website AdMob Verification</strong><br>
+                This website is the official developer portal for the "Foodie Choice (ShiJue)" iOS App, authorized for ad agency and publisher verification.
+                We have deployed a compliant authorization file in the website root directory, you can also view it here:
+                <br>
+                <span class="ads-code">google.com, pub-2325415022637360, DIRECT, f08c47fec0942fa0</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Foodie<span>Choice</span></div>
+        <div class="footer-links">
             <a href="privacy_en.html">Privacy Policy</a>
             <a href="terms_en.html">Terms of Service</a>
         </div>
-
-        <div class="contact">
-            <p>For any inquiries, feature requests, or technical support, please contact us at:</p>
-            <p style="margin-top: 10px;">Email: <strong>redzhe126@gmail.com</strong></p>
+        <div class="copyright">
+            &copy; 2026 Foodie Choice. All Rights Reserved.
         </div>
-    </div>
+    </footer>
+
 </body>
 </html>
