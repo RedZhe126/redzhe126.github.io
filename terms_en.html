@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Foodie Choice</title>
+    <style>
+        :root {
+            --primary-color: #FF7E36;
+            --text-color: #333333;
+            --light-bg: #fdfbf7;
+            --card-bg: #ffffff;
+            --border-color: #f0e6df;
+            --warning-bg: #fff5f5;
+            --warning-border: #ffcfcf;
+            --warning-text: #c53030;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--light-bg);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2em;
+            font-weight: 800;
+        }
+        .lang-btn {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .update-date {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        h2 {
+            color: #222;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        p, li {
+            margin-bottom: 12px;
+            color: #4a4a4a;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .warning-box {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            padding: 20px;
+            border-radius: 12px;
+            color: var(--warning-text);
+            margin: 25px 0;
+        }
+        .warning-box p, .warning-box li {
+            color: var(--warning-text);
+        }
+        .warning-box strong {
+            color: #9b2c2c;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+            background: #faf6f2;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <a href="index_en.html" class="back-link">← Back to Portal</a>
+    
+    <div class="header-container">
+        <h1>Terms of Service</h1>
+        <a href="terms.html" class="lang-btn">中文版本</a>
+    </div>
+    
+    <p class="update-date">Last Updated: June 2, 2026</p>
+
+    <p>Welcome to "Foodie Choice" (hereinafter referred to as "this Service"). Please read the following Terms of Service carefully before using this Application. By registering or utilizing this Service, you acknowledge that you have read, understood, and fully agreed to all provisions herewithin. If you do not agree to these Terms of Service, please stop using this Service immediately.</p>
+
+    <h2>1. Description of Services & Platform Architecture</h2>
+    <p>This Service provides restaurant searches, map navigations, customized favorites list synchronization, collaborative dining group voting rooms, and social sharing features. This Service consists of free functionalities and a paid premium tier (Foodie Pro).</p>
+    <p>To ensure optimal system performance and native safety, this Service utilizes distinct cloud databases depending on your platform: iOS users run on <strong>Apple CloudKit</strong>, while Android/Web users run on <strong>Google Firebase</strong>. The developer reserves the right to modify, upgrade, suspend, or terminate all or part of this Service at any time.</p>
+
+    <h2>2. Subscription Terms & Payments</h2>
+    <p>By subscribing to "Foodie Pro," you agree to the following terms:</p>
+    <ul>
+        <li><strong>Automatic Renewal:</strong> Subscription fees will be billed via your Apple ID (for iOS users) or Google Play Account (for Android users). Subscriptions automatically renew monthly or annually unless canceled at least 24 hours prior to the end of the current billing cycle.</li>
+        <li><strong>Cancellation:</strong> You can manage or cancel your subscription at any time via your App Store or Google Play Account settings.</li>
+        <li><strong>Refund Policy:</strong> All subscription transactions are entirely managed and held by Apple or Google App Store platforms. Any refund requests must be submitted through their respective official procedures.</li>
+        <li><strong>Daily Search Limits:</strong> Free tier users are subject to daily restaurant search quota limitations (calculated via CloudKit device records for iOS, and Firebase database for Android). Subscribing to "Foodie Pro" removes all limits and unlocks an ad-free premium experience.</li>
+    </ul>
+
+    <h2>3. User Conduct Guidelines</h2>
+    <p>Users must comply with all applicable local and international laws when using this Service. You shall not use this Service for any unlawful or inappropriate activities, including but not limited to:</p>
+    <ul>
+        <li>Reverse engineering, decompiling, disassembling, cracking, or attempting to extract any source code of this Service.</li>
+        <li>Uploading or transiting malware, computer viruses, Trojan horses, or any software designed to corrupt or disrupt system servers.</li>
+        <li>Utilizing any automated tools, scrapers, bots, or load testing programs to overload or interfere with server performance.</li>
+        <li>Posting violent, pornographic, hateful, defamatory, or copyright-infringing content within dining voting rooms or group chats.</li>
+    </ul>
+
+    <h2>4. Prohibition of Malicious Attacks & Cloud Cost Indemnification</h2>
+    <div class="warning-box">
+        <strong>[CRITICAL INDEMNIFICATION NOTICE]</strong>
+        <p>This Service is built on scalable cloud services billed on a pay-as-you-go basis. We strictly prohibit any form of malicious cyber attacks or server abuse, including but not limited to:</p>
+        <ul>
+            <li>Distributed Denial of Service (DDoS) attacks.</li>
+            <li>Sending disproportionate, looping, or automated queries to APIs (e.g., Google Places API, Apple MapKit) or databases (CloudKit, Firebase).</li>
+            <li>Attempting to bypass the subscription logic, quota checks, auth headers, or safety filters.</li>
+        </ul>
+        <p>If a user's malicious activities or attacks cause our cloud hosting infrastructure (Google Firebase, Apple CloudKit, Google Maps API, etc.) to incur abnormally high billing charges, database crashes, reputational harm, or any economic damages, <strong>the user shall be held fully liable for all associated costs. The user agrees to fully indemnify the developer for all direct and indirect losses (including reasonable investigation expenses and attorney fees).</strong></p>
+    </div>
+
+    <h2>5. Disclaimer of Warranties</h2>
+    <p>All restaurant and geographical information (including business hours, address, reviews, route navigation, and menus) shown in this Service are provided by third-party APIs and public data for reference only. We make no guarantees regarding their absolute accuracy, integrity, or real-time status. Users bear all risks associated with dining decisions, traveling, or dining cost. The developer shall not be held liable for any loss or damages.</p>
+
+    <h2>6. Intellectual Property Rights</h2>
+    <p>All source code, UI designs, graphics, branding, trademarks, and patents of this Application are the exclusive property of the developer. No copying, replication, distribution, or commercial exploitation is permitted without explicit written authorization.</p>
+
+    <h2>7. Governing Law & Jurisdiction</h2>
+    <p>These Terms of Service and any disputes arising out of or in connection with them shall be governed by and construed in accordance with the laws of the <strong>Republic of China (Taiwan)</strong>.</p>
+    <p>Both parties agree that any legal action or proceeding arising from these Terms of Service or this Service shall be submitted exclusively to the <strong>Taiwan Taoyuan District Court</strong> as the court of first instance.</p>
+
+    <div class="footer">
+        For any questions or concerns regarding these Terms of Service, please contact the developer at:<br>
+        Email: <strong>redzhe126@gmail.com</strong>
+    </div>
+</body>
+</html>

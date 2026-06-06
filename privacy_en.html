@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Foodie Choice</title>
+    <style>
+        :root {
+            --primary-color: #FF7E36;
+            --text-color: #333333;
+            --light-bg: #fdfbf7;
+            --card-bg: #ffffff;
+            --border-color: #f0e6df;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--light-bg);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2em;
+            font-weight: 800;
+        }
+        .lang-btn {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .update-date {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        h2 {
+            color: #222;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        p, li {
+            margin-bottom: 12px;
+            color: #4a4a4a;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-box {
+            background: rgba(255, 126, 54, 0.04);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+            background: #faf6f2;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <a href="index_en.html" class="back-link">← Back to Portal</a>
+    
+    <div class="header-container">
+        <h1>Privacy Policy</h1>
+        <a href="privacy.html" class="lang-btn">中文版本</a>
+    </div>
+    
+    <p class="update-date">Last Updated: June 2, 2026</p>
+
+    <p>"Foodie Choice" (hereinafter referred to as "this Application") is developed by redzhe126 (hereinafter referred to as "we," "us," or "our"). We highly value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, disclose, and secure your information in compliance with Apple's App Store Privacy Manifest requirements and relevant regulations.</p>
+
+    <div class="highlight-box">
+        <strong>[Important Data Storage Architecture Declaration]</strong><br>
+        To guarantee the highest standard of privacy protection and seamless performance, this Application utilizes completely isolated database infrastructures depending on your operating system platform:
+        <ul>
+            <li><strong>iOS Users:</strong> All personal data (including user accounts, subscription status, daily search limits, voting rooms, favorites folders, and profiles) is stored <strong>exclusively and directly</strong> in Apple's secure <strong>CloudKit container</strong> (iCloud ecosystem). iOS user data never transits through nor is uploaded to Google Firebase.</li>
+            <li><strong>Android & Web Users:</strong> Data storage, database management, and authentication are powered by <strong>Google Firebase (Firestore & Firebase Auth)</strong>.</li>
+        </ul>
+        Any cloud storage referred to in this policy corresponds respectively to Apple CloudKit or Google Firebase, both of which implement industry-leading encryption and security standards.
+    </div>
+
+    <h2>1. Information We Collect</h2>
+    <p>To provide stable services, we collect the following information in accordance with Apple's Privacy Manifest guidelines and relative regulations:</p>
+    <ul>
+        <li><strong>Account & Identification Data:</strong> When you register or log in, we collect your email address, display name, and profile picture. This data is associated with your account and is used for App functionalities, group voting rooms, and cross-device favorites synchronization.</li>
+        <li><strong>Precise Location Data:</strong> To offer nearby restaurant searching and navigation services, this Application requests access to your precise location. This data is only used to query Google Places or Apple MapKit API for immediate results and is never logged or used to track your long-term movements.</li>
+        <li><strong>Subscription & Purchase Information:</strong> To manage your "Foodie Pro" subscription status, we record your subscription type, payment status, and expiration date. The checkout process is processed entirely by Apple App Store (for iOS) or Google Play Store (for Android); we never access, process, or store your credit card details.</li>
+        <li><strong>Device & Usage Data:</strong> This includes search history (used solely to calculate daily free search limits), favorite lists, device identifiers, and crash logs, which are used to optimize performance and protect security.</li>
+    </ul>
+
+    <h2>2. Data Security & Encryption</h2>
+    <p>We employ industry-standard encryption techniques to protect your information:</p>
+    <ul>
+        <li><strong>Encryption in Transit:</strong> All communications with cloud servers are established via secure HTTPS (TLS) connections.</li>
+        <li><strong>Local Storage Encryption:</strong> Sensitive user data (such as display names, avatar identifiers, and temporary credentials) are stored securely on the device using hardware-grade encryption.</li>
+        <li><strong>Cloud Security:</strong> 
+            <ul>
+                <li><strong>iOS:</strong> Powered by Apple CloudKit, secured under Apple's standard privacy policies and iCloud Advanced Data Protection.</li>
+                <li><strong>Android/Web:</strong> Powered by Google Firebase, secured by robust Firestore Security Rules to prevent unauthorized read/write access.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>3. How We Use the Information</h2>
+    <ul>
+        <li>To provide, maintain, and optimize the service (such as providing precise restaurant maps).</li>
+        <li>To verify identity, ensuring account safety and accurate subscription entitlement.</li>
+        <li>To provide personalized content (such as custom maps, favorite folders, and group voting statistics).</li>
+        <li>To deliver push notifications regarding your voting room updates or critical service announcements.</li>
+        <li>To detect and prevent abuse, fraudulent behavior, API scraping, or malicious cyber attacks.</li>
+    </ul>
+
+    <h2>4. Information Sharing & Disclosure</h2>
+    <p>We will never sell your personal data to third parties. We only share or process your data under the following circumstances:</p>
+    <ul>
+        <li><strong>Service Providers:</strong> 
+            <ul>
+                <li>iOS users use Apple CloudKit as the cloud database; Android/Web users use Google Firebase.</li>
+                <li>We utilize Apple MapKit API and Google Maps / Places API to provide maps, address queries, and restaurant exploration details.</li>
+            </ul>
+        </li>
+        <li><strong>Legal Requirements:</strong> If required by law, or to cooperate with legitimate law enforcement investigations, or to mitigate malicious network attacks.</li>
+    </ul>
+
+    <h2>5. Data Retention & Deletion</h2>
+    <p>We retain your personal data only for as long as necessary to provide the service. You can request deletion of your account and all associated data at any time via in-app settings or by contacting the developer. Once you delete your account, all cloud-synced folders, voting records, and profiles (on CloudKit or Firebase) will be permanently and irreversibly removed.</p>
+
+    <h2>6. Third-Party SDKs & Services</h2>
+    <p>This Application integrates the following third-party services. Please refer to their respective websites for their privacy policies:</p>
+    <ul>
+        <li><strong>Apple CloudKit & MapKit</strong> (Primary storage and map services for iOS users)</li>
+        <li><strong>Google Firebase</strong> (Authentication, Firestore, Remote Config) (Primary storage and authentication for Android/Web users)</li>
+        <li><strong>Google Maps & Places API</strong> (Restaurant data and search engine)</li>
+        <li><strong>Google AdMob</strong> (Used in the free version only to display ads to offset server operating costs)</li>
+    </ul>
+
+    <h2>7. Children's Privacy</h2>
+    <p>This Application is not directed to children under 13. If you discover that your child has provided us with personal information without consent, please contact us immediately, and we will delete it from our servers (CloudKit or Firebase).</p>
+
+    <h2>8. Changes to this Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Any material changes will be announced inside the Application or updated on this developer page. We recommend reviewing this policy regularly to stay informed.</p>
+
+    <div class="footer">
+        For any questions, concerns, or account deletion requests regarding this Privacy Policy, please contact the developer at:<br>
+        Email: <strong>redzhe126@gmail.com</strong>
+    </div>
+</body>
+</html>
