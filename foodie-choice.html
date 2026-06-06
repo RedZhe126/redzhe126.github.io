@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食決 ShiJue | 讓每一次的選擇都成為美味的驚喜</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF7E36;
+            --primary-light: #FFAE63;
+            --primary-dark: #E05E1B;
+            --secondary: #2C2C2E;
+            --background: #FAFAFC;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1C1C1E;
+            --text-muted: #8E8E93;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景流光特效 */
+        .bg-glows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+
+        .glow-1 {
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background-color: var(--primary);
+            animation: pulse 12s infinite alternate;
+        }
+
+        .glow-2 {
+            top: 40%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background-color: var(--primary-light);
+            animation: pulse 8s infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(30px, 50px); }
+        }
+
+        /* 導覽列 Header */
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 8px 16px rgba(255, 126, 54, 0.3);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
+
+        /* Hero 主視覺區 */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .badge {
+            background-color: rgba(255, 126, 54, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 126, 54, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        /* App Store 下載按鈕 */
+        .download-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-store {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-store:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            background-color: #000;
+        }
+
+        .btn-store svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .btn-text-small {
+            font-size: 11px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: block;
+            margin-bottom: -2px;
+        }
+
+        .btn-text-large {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* 右側手機 Mockup */
+        .hero-mockup {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 640px;
+            background-color: #000;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border: 4px solid #3a3a3c;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #FFF5EF 0%, #FAFAFC 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 模擬 App 介面 */
+        .app-header {
+            padding: 30px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .app-logo {
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .app-user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+        }
+
+        .app-card {
+            margin: 15px 20px;
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .app-card-image {
+            width: 100%;
+            height: 140px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .app-card-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 12px;
+            color: var(--text-main);
+        }
+
+        .app-card-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .app-card-btn {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .app-tabbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            border-top: 1px solid #f2f2f7;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .tab-item {
+            width: 24px;
+            height: 24px;
+            background-color: #e5e5ea;
+            border-radius: 6px;
+        }
+
+        .tab-item.active {
+            background-color: var(--primary);
+        }
+
+        /* 特色功能 Feature Section */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-title h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .features-title p {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.06);
+            border-color: rgba(255, 126, 54, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 126, 54, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* 關於 / 聯絡資訊 */
+        .info-section {
+            background-color: #FFF5EF;
+            padding: 100px 20px;
+        }
+
+        .info-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(255, 126, 54, 0.05);
+            border: 1px solid rgba(255, 126, 54, 0.08);
+        }
+
+        .info-container h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .info-container p {
+            font-size: 16px;
+            color: #48484a;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            border-top: 1px solid #f2f2f7;
+            padding-top: 24px;
+            margin-top: 30px;
+        }
+
+        .contact-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* app-ads.txt 指示區（防窺/合規） */
+        .ads-notice {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--background);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .ads-code {
+            font-family: monospace;
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #e5e5ea;
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        /* 頁尾 Footer */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            border-top: 1px solid #e5e5ea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* 響應式優化 */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .hero-mockup {
+                margin-top: 40px;
+            }
+            
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景流光 -->
+    <div class="bg-glows">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <!-- 導覽列 -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">決</div>
+            <div class="logo-text">食<span>決</span></div>
+        </a>
+        <nav>
+            <a href="#features">特色功能</a>
+            <a href="#support">開發者支援</a>
+            <a href="index_en.html" style="color: var(--primary); border: 1px solid var(--primary); padding: 4px 12px; border-radius: 20px;">English</a>
+            <a href="privacy.html">隱私權政策</a>
+            <a href="terms.html">服務條款</a>
+        </nav>
+    </header>
+
+    <!-- Hero 區塊 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🔥 今天要吃什麼？</div>
+            <h1>讓每一次的選擇<br>都成為<span>美味的驚喜</span></h1>
+            <p>「食決 ShiJue」是一款專為饕客設計的餐廳探索 App。整合精確的地圖定位與營業時間解析演算法，一鍵解決您「每餐吃什麼」的世紀難題，帶您探尋藏在城市角落的絕妙滋味。</p>
+            
+            <div class="download-buttons">
+                <!-- 模擬 App Store 下載按鈕 -->
+                <a href="https://apps.apple.com/tw/app/%E9%A3%9F%E6%B1%BA-shijue/id6769754647" class="btn-store">
+                    <svg viewBox="0 0 384 512">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48.7-22.7-84.5-22.7-46.9 0-90.3 26.4-114 67.5-49 84.8-12.6 209.7 34.5 277.6 23.3 33.3 49.6 70.1 86 68.8 34.9-1.4 48.2-22.3 90.4-22.3 41.9 0 54 22.3 90.6 21.5 37.1-.8 60-33 83-66.6 26.7-38.6 37.5-76.1 38.1-78.1-1.2-.5-72.8-27.7-73.4-110.8zM286.7 82.5c18-22.4 30.2-53.5 26.8-82.5-25.2 1-56.1 16.9-74.2 38.2-15.6 18-29.3 49.6-25.4 78 28.1 2.2 57.2-14.7 72.8-33.7z"/>
+                    </svg>
+                    <div>
+                        <span class="btn-text-small">Download on the</span>
+                        <span class="btn-text-large">App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-mockup">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="app-header">
+                        <span class="app-logo">食決</span>
+                        <div class="app-user-avatar"></div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-card-image">壽司、燒肉、火鍋</div>
+                        <div class="app-card-title">品川蘭 桃園店</div>
+                        <div class="app-card-sub">
+                            <span>⭐️ 4.5 星級評價</span>
+                            <span style="color: green; font-weight: bold;">營業中</span>
+                        </div>
+                        <div class="app-card-btn">今天就決定吃這家！</div>
+                    </div>
+
+                    <div class="app-card" style="margin-top: 0; opacity: 0.9;">
+                        <div class="app-card-title" style="margin-top: 0; font-size: 14px;">大漠紅頂級蒙古鍋（中壢店）</div>
+                        <div class="app-card-sub" style="margin-top: 2px;">
+                            <span>⭐️ 4.6 (120+ 評分)</span>
+                            <span style="color: #FF7E36;">火鍋料理</span>
+                        </div>
+                    </div>
+
+                    <div class="app-tabbar">
+                        <div class="tab-item active"></div>
+                        <div class="tab-item"></div>
+                        <div class="tab-item"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色功能區塊 -->
+    <section class="features" id="features">
+        <div class="features-title">
+            <h2>食決 的核心功能特色</h2>
+            <p>精心研發的探索與地圖技術，帶給您流暢的美食尋訪體驗</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3>智慧地圖探索</h3>
+                <p>一鍵定位探索身邊的熱門美食，支援中式、日式、韓式、泰式及西式等十餘種料理分類精準過濾。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>營業時間判定演算法</h3>
+                <p>獨創多時段比對與分日營業時間解析機制，讓您輕鬆掌握中場休息、店休等真實營業狀態，絕不踩空。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>優質精選推薦</h3>
+                <p>透過流暢的動態卡片滑動特效，帶您發掘最受歡迎的特惠專區與行銷主打菜色，輕鬆獲取靈感。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 支援與聯絡區塊 -->
+    <section class="info-section" id="support">
+        <div class="info-container">
+            <h2>開發者與支援服務</h2>
+            <p>「食決 ShiJue」是由熱愛美食與科技的開發團隊獨立打造。我們相信科技應當改善生活品質，而「吃什麼」正是我們每個人每天最重要的決定。如果您在使用 App 過程中遇到任何技術問題，或者有商務合作需求，歡迎與我們取得聯繫。</p>
+            
+            <div class="contact-info">
+                <h4>聯絡我們</h4>
+                <p>開發者：HungChe Hsu</p>
+                <p>電子郵件：<a href="mailto:showing-fondue-6u@icloud.com">showing-fondue-6u@icloud.com</a></p>
+            </div>
+
+            <!-- AdMob app-ads.txt 合規說明 -->
+            <div class="ads-notice">
+                <strong>📢 開發者網站 AdMob 認證資訊</strong><br>
+                本網站為「食決 ShiJue (iOS)」App 之官方開發者入口網站，授權廣告代理商及發布商驗證。
+                我們已在網站根目錄下部署了合規的授權檔案，您亦可於此檢視：
+                <br>
+                <span class="ads-code">google.com, pub-2325415022637360, DIRECT, f08c47fec0942fa0</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-logo">食<span>決</span></div>
+        <div class="footer-links">
+            <a href="privacy.html">隱私權政策 (Privacy Policy)</a>
+            <a href="terms.html">服務條款 (Terms of Service)</a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 食決 ShiJue. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
